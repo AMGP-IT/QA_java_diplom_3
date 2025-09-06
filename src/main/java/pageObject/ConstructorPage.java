@@ -39,21 +39,20 @@ public class ConstructorPage {
                 driver.findElement(toppingsButton).click();
                 break;
             default:
-                System.out.println("Выбрана несуществующая кнопка");
+                throw new IllegalArgumentException("Обращение к неизвестной кнопке: " + button);
         }
     }
 
     public Boolean getStatusActiveButton(SectionsConstructor button) {
         switch (button) {
             case BUNS:
-                return driver.findElement(statusActiveSaucesButton).isDisplayed();
-            case SAUCES:
                 return driver.findElement(statusActiveBunsButton).isDisplayed();
+            case SAUCES:
+                return driver.findElement(statusActiveSaucesButton).isDisplayed();
             case TOPPINGS:
                 return driver.findElement(statusActiveToppingsButton).isDisplayed();
             default:
-                System.out.println("Выбрана несуществующая кнопка");
+                throw new IllegalArgumentException("Обращение к неизвестной кнопке: " + button);
         }
-        return null;
     }
 }

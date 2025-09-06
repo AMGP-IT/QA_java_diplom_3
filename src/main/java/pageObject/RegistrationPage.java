@@ -21,6 +21,7 @@ public class RegistrationPage {
     public static final By registrationButton = By.xpath(".//button[text()='Зарегистрироваться']");
     public static final By heading = By.xpath(".//h2[text()='Регистрация']");
     public static final By logInLink = By.xpath(".//a[text()='Войти']");
+    public static final By errorMessagePassword = By.xpath(".//p[text()='Некорректный пароль']");
 
 
     public void fillNameField(String text){
@@ -60,6 +61,9 @@ public class RegistrationPage {
 
     public WebElement getHeading(){
         return driver.findElement(heading);
+    }
+    public WebElement getErrorMessagePassword(){
+        return driver.findElement(errorMessagePassword);
     }
 }
 

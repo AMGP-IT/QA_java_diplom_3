@@ -5,7 +5,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.*;
+
 
 import static data.DataTest.URL;
 
@@ -20,13 +22,17 @@ public class BaseTest {
 
     @Before
     public void startUp(){
-        String browser = System.getProperty("browser", "chrome");
-        if (browser.equals("chrome")) {
-            startBrowserChrome();
-        } else if (browser.equals("yandex")) {
-            startBrowserYandex();
-        } else {
-            System.out.println("Такой браузер ещё не поддерживается :(");
+        String browser = "yandex";
+
+        switch (browser) {
+            case "chrome":
+                startBrowserChrome();
+                break;
+            case "yandex":
+                startBrowserYandex();
+                break;
+            default:
+                throw new IllegalArgumentException("Неподдерживаемый браузер: " + browser);
         }
 
         loginPage = new LoginPage(driver);
@@ -40,16 +46,26 @@ public class BaseTest {
 
     @After
     public void tearDown(){
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     public void startBrowserYandex() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Yandex Driver\\yandexdriver.exe");
 
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-notifications");
+
+        driver = new ChromeDriver(options);
     }
 
     public void startBrowserChrome() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-notifications");
 
+        driver = new ChromeDriver(options);
     }
 }
