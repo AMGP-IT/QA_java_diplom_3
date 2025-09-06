@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class RegistrationPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;

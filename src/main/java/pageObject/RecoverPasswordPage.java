@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class RecoverPasswordPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public RecoverPasswordPage(WebDriver driver) {
         this.driver = driver;

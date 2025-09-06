@@ -2,7 +2,6 @@ package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,7 +9,7 @@ import java.time.Duration;
 import data.SectionsConstructor;
 
 public class ConstructorPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ConstructorPage(WebDriver driver) {
         this.driver = driver;
@@ -47,11 +46,11 @@ public class ConstructorPage {
     public Boolean getStatusActiveButton(SectionsConstructor button) {
         switch (button) {
             case BUNS:
-                return driver.findElement(bunsButton).isDisplayed();
+                return driver.findElement(statusActiveSaucesButton).isDisplayed();
             case SAUCES:
-                return driver.findElement(saucesButton).isDisplayed();
+                return driver.findElement(statusActiveBunsButton).isDisplayed();
             case TOPPINGS:
-                return driver.findElement(toppingsButton).isDisplayed();
+                return driver.findElement(statusActiveToppingsButton).isDisplayed();
             default:
                 System.out.println("Выбрана несуществующая кнопка");
         }

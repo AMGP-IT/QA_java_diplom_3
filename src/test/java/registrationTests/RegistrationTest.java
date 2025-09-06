@@ -4,7 +4,6 @@ import data.BaseTest;
 import org.junit.Test;
 
 import static data.DataTest.*;
-import static org.junit.Assert.assertTrue;
 
 public class RegistrationTest extends BaseTest {
 
