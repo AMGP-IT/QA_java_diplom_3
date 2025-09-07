@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,13 +20,16 @@ public class LoginPage {
     public static final By recoverPasswordLink = By.xpath(".//a[text()='Восстановить пароль']");
     public static final By heading = By.xpath(".//h2[text()='Вход']");
 
+    @Step("Нажать на ссылку страницы регистрации")
     public void clickRegistrationLink(){
         driver.findElement(registrationLink).click();
     }
+    @Step("Нажать на ссылку страницы восстановления пароля")
     public void clickRecoverPasswordLink(){
         driver.findElement(recoverPasswordLink).click();
     }
 
+    @Step("Подождать появления заголовка страницы авторизации")
     public void waitLoadingLoginPage(){
         new WebDriverWait(driver, Duration.ofSeconds(5)).
                 until(ExpectedConditions.visibilityOfElementLocated(heading));

@@ -1,5 +1,6 @@
 package pageObject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,7 @@ public class ConstructorPage {
                 until(ExpectedConditions.visibilityOfElementLocated(heading));
     }
 
+    @Step("Нажать кнопку выбора секции в конструкторе бургера")
     public void clickButton(SectionsConstructor button){
         switch (button){
             case BUNS:
@@ -43,6 +45,7 @@ public class ConstructorPage {
         }
     }
 
+    @Step("Получить статус кнопки секции в конструкторе бургера")
     public Boolean getStatusActiveButton(SectionsConstructor button) {
         switch (button) {
             case BUNS:

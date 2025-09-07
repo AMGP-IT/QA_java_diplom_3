@@ -1,6 +1,7 @@
 package registrationTests;
 
 import data.BaseTest;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,6 +10,7 @@ import static data.DataTest.*;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
+@DisplayName("Тесты на регистрацию с невалидным паролем")
 public class RegistrationPasswordTest extends BaseTest {
     private final String password;
 
@@ -26,6 +28,7 @@ public class RegistrationPasswordTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Негативный тест на регистрацию")
     public void testValidPassword() {
         headerPage.clickPersonalCabinetButton();
 

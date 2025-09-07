@@ -2,6 +2,7 @@ package navigationTests;
 
 import data.BaseTest;
 import data.SectionsConstructor;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,9 +10,11 @@ import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
+@DisplayName("Тест на переход по секциям в конструкторе бургера")
 public class NavigationSectionInConstructorTest extends BaseTest {
 
     @Test
+    @DisplayName("Тест на переход в секцию 'Соусы'")
     public void testNavigateToSaucesSection(){
         headerPage.clickConstructorButton();
 
@@ -22,6 +25,7 @@ public class NavigationSectionInConstructorTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Тест на переход в секцию 'Начинки'")
     public void testNavigateToToppingsSection(){
         headerPage.clickConstructorButton();
 
@@ -31,6 +35,7 @@ public class NavigationSectionInConstructorTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Тест на переход в секцию 'Булки'")
     public void testNavigateToBunsSection(){
         headerPage.clickConstructorButton();
 
