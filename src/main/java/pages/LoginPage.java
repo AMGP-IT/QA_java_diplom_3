@@ -1,4 +1,4 @@
-package pageObject;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -19,6 +19,9 @@ public class LoginPage {
     public static final By registrationLink = By.xpath(".//a[text()='Зарегистрироваться']");
     public static final By recoverPasswordLink = By.xpath(".//a[text()='Восстановить пароль']");
     public static final By heading = By.xpath(".//h2[text()='Вход']");
+    public static final By emailField = By.xpath(".//label[text()='Email']/../input");
+    public static final By passwordField = By.xpath(".//label[text()='Пароль']/../input");
+    public static final By logInButton = By.xpath(".//button[text()='Войти']");
 
     @Step("Нажать на ссылку страницы регистрации")
     public void clickRegistrationLink(){
@@ -27,6 +30,33 @@ public class LoginPage {
     @Step("Нажать на ссылку страницы восстановления пароля")
     public void clickRecoverPasswordLink(){
         driver.findElement(recoverPasswordLink).click();
+    }
+
+    @Step("Заполнить поле email")
+    public void fillEmailField(String text){
+        driver.findElement(emailField).sendKeys(text);
+    }
+
+    @Step("Заполнить поле пароль")
+    public void fillPasswordField(String text){
+        driver.findElement(passwordField).sendKeys(text);
+    }
+
+    @Step("Нажать кнопку авторизации")
+    public void clickLogInButton(){
+        driver.findElement(logInButton).click();
+    }
+
+    @Step("Заполнить все поля")
+    public void fillAllFields(String email, String password){
+        fillEmailField(email);
+        fillPasswordField(password);
+    }
+
+    @Step("Заполнить поля и нажать кнопку авторизации")
+    public void fillFieldsAndClickButtonRegistration(String email, String password){
+        fillAllFields(email, password);
+        clickLogInButton();
     }
 
     @Step("Подождать появления заголовка страницы авторизации")

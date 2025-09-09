@@ -1,6 +1,7 @@
-package registrationTests;
+package registration;
 
 import data.BaseTest;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ public class RegistrationPasswordTest extends BaseTest {
     }
 
     @Parameterized.Parameters(name = "Тестовые данные: {0}")
+    @DisplayName("Набор тестовых данных для проверки валидации пароля")
+    @Description("Предоставляет варианты паролей короче 6 символов для проверки их валидности при регистрации")
     public static Object[][] getTextData() {
         return new Object[][] {
                 {"1"},
@@ -28,8 +31,17 @@ public class RegistrationPasswordTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Негативный тест на регистрацию")
-    public void testValidPassword() {
+    @DisplayName("Тест на проверку некорректного пароля при регистрации")
+    @Description("Тест проверяет валидацию пароля короче 6 символов при регистрации пользователя. " +
+            "Сценарий: " +
+            "* Переход в личный кабинет " +
+            "* Переход к форме регистрации " +
+            "* Заполнение всех полей с некорректным паролем " +
+            "* Попытка регистрации " +
+            "Ожидаемые результаты: " +
+            "* Отображение сообщения об ошибке " +
+            "* Регистрация не должна быть успешной")
+    public void testInvalidPassword() {
         headerPage.clickPersonalCabinetButton();
 
         loginPage.waitLoadingLoginPage();
@@ -38,7 +50,6 @@ public class RegistrationPasswordTest extends BaseTest {
         registrationPage.waitLoadingRegistrationPage();
         registrationPage.fillAllFields(FIRST_NAME, EMAIL, password);
         registrationPage.clickRegistrationButton();
-
 
         assertTrue("Пароль (" + password + ") должен быть недействительным", registrationPage.getErrorMessagePassword().isDisplayed());
     }

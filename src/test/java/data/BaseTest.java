@@ -1,12 +1,11 @@
 package data;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pageObject.*;
+import pages.*;
 
 
 import static data.DataTest.URL;
@@ -22,7 +21,7 @@ public class BaseTest {
 
     @Before
     public void startUp(){
-        String browser = "yandex";
+        String browser = "chrome";
 
         switch (browser) {
             case "chrome":

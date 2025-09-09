@@ -1,7 +1,8 @@
-package navigationTests;
+package navigation;
 
 import data.BaseTest;
 import data.SectionsConstructor;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +16,13 @@ public class NavigationSectionInConstructorTest extends BaseTest {
 
     @Test
     @DisplayName("Тест на переход в секцию 'Соусы'")
+    @Description("Тест проверяет корректность перехода в секцию 'Соусы' в конструкторе. " +
+            "Сценарий: " +
+            "* Переход в конструктор " +
+            "* Ожидание загрузки страницы " +
+            "* Нажатие на кнопку 'Соусы' " +
+            "Ожидаемые результаты: " +
+            "* Кнопка 'Соусы' становится активной ")
     public void testNavigateToSaucesSection(){
         headerPage.clickConstructorButton();
 
@@ -26,6 +34,13 @@ public class NavigationSectionInConstructorTest extends BaseTest {
 
     @Test
     @DisplayName("Тест на переход в секцию 'Начинки'")
+    @Description("Тест проверяет корректность перехода в секцию 'Начинки' в конструкторе. " +
+            "Сценарий: " +
+            "* Переход в конструктор " +
+            "* Ожидание загрузки страницы " +
+            "* Нажатие на кнопку 'Начинки' " +
+            "Ожидаемые результаты: " +
+            "* Кнопка 'Начинки' становится активной ")
     public void testNavigateToToppingsSection(){
         headerPage.clickConstructorButton();
 
@@ -36,6 +51,14 @@ public class NavigationSectionInConstructorTest extends BaseTest {
 
     @Test
     @DisplayName("Тест на переход в секцию 'Булки'")
+    @Description("Тест проверяет корректность перехода в секцию 'Булки' в конструкторе. " +
+            "Сценарий: " +
+            "* Переход в конструктор " +
+            "* Ожидание загрузки страницы " +
+            "* Переход через секцию 'Начинки' " +
+            "* Нажатие на кнопку 'Булки' " +
+            "Ожидаемые результаты: " +
+            "* Кнопка 'Булки' становится активной ")
     public void testNavigateToBunsSection(){
         headerPage.clickConstructorButton();
 
