@@ -6,6 +6,7 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
 import static data.DataTest.*;
+import static org.junit.Assert.assertTrue;
 
 @DisplayName("Тесты на регистрацию")
 public class RegistrationTest extends BaseTest {
@@ -34,5 +35,6 @@ public class RegistrationTest extends BaseTest {
         registrationPage.fillFieldsAndClickButtonRegistration(FIRST_NAME, EMAIL, PASSWORD);
 
         loginPage.waitLoadingLoginPage();
+        assertTrue("Должен отображаться заголовок страницы авторизации", loginPage.getHeading().isDisplayed());
     }
 }
